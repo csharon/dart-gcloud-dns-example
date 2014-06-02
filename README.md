@@ -1,4 +1,4 @@
 xdZoneEdit
 ==========
 
-Google Cloud DNS Zone Editor
+Google Cloud DNS Zone Editor written in Dart
