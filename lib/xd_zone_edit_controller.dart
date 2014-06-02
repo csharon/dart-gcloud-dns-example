@@ -15,8 +15,10 @@ class XDZoneEditController {
   String appName = 'xdZoneEdit';
   String projectName;
   Project project;
+  List<ManagedZone> zones;
   GoogleOauth2Service gauth;
   GoogleCloudDns dnsClient;
+
   bool get isAuthenticated {
     if(gauth.isAuthenticated) {
       dnsClient.createDnsClient();
@@ -36,9 +38,12 @@ class XDZoneEditController {
   );
 
   void loadProject() {
-    dnsClient.dns.projects.get(projectName).then((proj) {
-      project = proj;
-    });
+
+    dnsClient.dns.managedZones.list(projectName).then((zoneList) {
+      zones = zoneList.managedZones;
+    })
+    .catchError((error) => print(error));
+
   }
 
   void logout() {
