@@ -19,7 +19,13 @@
     <button type="submit" ng-disabled="projectForm.invalid">Load Project</button>
   </form>
   <hr>
-  <label>{{appCtrl.project | json}}</label>
+  <!--<label ng-if="appCtrl.project != null">{{appCtrl.project | json}}</label>-->
+  <div ng-if="appCtrl.zones != null">
+    <h3>Zones</h3>
+    <ul>
+      <li ng-repeat="zone in appCtrl.zones">{{zone.dnsName}}</li>
+    </ul>
+  </div>
 </div>
 
 <script src="packages/shadow_dom/shadow_dom.min.js"></script>
