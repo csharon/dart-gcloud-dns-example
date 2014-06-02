@@ -13,39 +13,29 @@ class GoogleOauth2Service {
   static final String clientWeb = '795904425230-d777qbrp5vsbbk9jsqegd4ne115vmtgm.apps.googleusercontent.com';
   static final List<String> scopes = [
       'openid',
+      'profile',
       dnsclient.Dns.NDEV_CLOUDDNS_READWRITE_SCOPE,
       dnsclient.Dns.CLOUD_PLATFORM_SCOPE
   ];
 
-  var dns;
-  bool isAuthenticated;
-  var auth;
+  //var dns;
+  //bool isAuthenticated;
+  final auth = new GoogleOAuth2(clientWeb, scopes, autoLogin: true);
 
   GoogleOauth2Service();
 
-  void init(){
-    auth = new GoogleOAuth2(clientWeb, scopes, tokenLoaded: oauthReady);
-  }
-
-
-  void oauthReady(Token token) {
-
-    isAuthenticated = true;
-    dns = new dnsclient.Dns(auth);
-    dns.oauth_token = auth.token.data;
-    Project project = dns.projects.get('fresh-gravity-595')
-    .then(
-        (proj) {
-          print(proj);
-        })
-    .catchError((error) {
-      print(error);
-    });
-  }
 
   Future login(){
-    init();
+    //init();
     return auth.login();
+  }
+
+  void logout(){
+    auth.logout();
+  }
+
+  bool get isAuthenticated {
+    return auth.token != null;
   }
 
 }
