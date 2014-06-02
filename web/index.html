@@ -9,8 +9,18 @@
 <body app-controller ng-cloak>
 <h1>{{appCtrl.appName}}</h1>
 
-<button ng-click="appCtrl.login()">Login</button>
+<button ng-click="appCtrl.login()" ng-if="!appCtrl.isAuthenticated">Login</button>
+<button ng-click="appCtrl.logout()" ng-if="appCtrl.isAuthenticated">Logout</button>
+<div ng-if="appCtrl.isAuthenticated">
+  <form name="projectForm" novalidate ng-submit="appCtrl.loadProject()">
+    <label for="projectName">Project:</label>
+    <input type="text" id="projectName" name="projectName" ng-model="appCtrl.projectName" required>
 
+    <button type="submit" ng-disabled="projectForm.invalid">Load Project</button>
+  </form>
+  <hr>
+  <label>{{appCtrl.project | json}}</label>
+</div>
 
 <script src="packages/shadow_dom/shadow_dom.min.js"></script>
 <script type="application/dart" src="main.dart"></script>
