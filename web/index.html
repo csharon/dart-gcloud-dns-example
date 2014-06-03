@@ -12,7 +12,7 @@
 <button ng-click="appCtrl.login()" ng-if="!appCtrl.isAuthenticated">Login</button>
 <button ng-click="appCtrl.logout()" ng-if="appCtrl.isAuthenticated">Logout</button>
 <div ng-if="appCtrl.isAuthenticated">
-  <form name="projectForm" novalidate ng-submit="appCtrl.loadProject()">
+  <form name="projectForm" novalidate ng-submit="appCtrl.loadZones()">
     <label for="projectName">Project:</label>
     <input type="text" id="projectName" name="projectName" ng-model="appCtrl.projectName" required>
 

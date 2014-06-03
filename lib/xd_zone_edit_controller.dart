@@ -32,12 +32,10 @@ class XDZoneEditController {
 
   Future login() => gauth.login().then(
     (_) {
-
-      //isAuthenticated = true;
     }
   );
 
-  void loadProject() {
+  void loadZones() {
 
     dnsClient.dns.managedZones.list(projectName).then((zoneList) {
       zones = zoneList.managedZones;
