@@ -1,0 +1,33 @@
+{
+  "name": "xdZoneEdit",
+  "version": "0.0.1",
+  "homepage": "https://github.com/csharon/xdZoneEdit",
+  "authors": [
+    "Chris Sharon <chris@xdoji.com>"
+  ],
+  "description": "Dart Google Cloud DNS Editor",
+  "moduleType": [
+    "es6"
+  ],
+  "keywords": [
+    "Dart",
+    "AngularDart",
+    "Google",
+    "Cloud",
+    "DNS",
+    "API"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "font-awesome": "~4.1.0",
+    "sass-bootstrap": "~3.0.2"
+  }
+}
