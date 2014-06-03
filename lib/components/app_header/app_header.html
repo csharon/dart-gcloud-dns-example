@@ -1,0 +1,11 @@
+<nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">{{appHeader.appName}}</a>
+    </div>
+    <div class="navbar-right">
+      <button class="btn navbar-btn btn-primary" ng-click="appHeader.login()" ng-if="!appHeader.isAuthenticated"><i class="fa fa-google"></i> Login</button>
+      <button class="btn navbar-btn" ng-click="appHeader.logout()" ng-if="appHeader.isAuthenticated">Logout</button>
+    </div>
+  </div>
+</nav>

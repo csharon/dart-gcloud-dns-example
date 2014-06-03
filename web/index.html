@@ -7,10 +7,8 @@
   <link rel="stylesheet" href="main.css">
 </head>
 <body app-controller ng-cloak>
-<h1>{{appCtrl.appName}}</h1>
+<app-header></app-header>
 
-<button ng-click="appCtrl.login()" ng-if="!appCtrl.isAuthenticated">Login</button>
-<button ng-click="appCtrl.logout()" ng-if="appCtrl.isAuthenticated">Logout</button>
 <div ng-if="appCtrl.isAuthenticated">
   <form name="projectForm" novalidate ng-submit="appCtrl.loadZones()">
     <label for="projectName">Project:</label>
