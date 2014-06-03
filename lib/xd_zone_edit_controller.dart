@@ -12,7 +12,6 @@ import 'package:xdZoneEdit/dns/google_cloud_dns.dart';
 )
 class XDZoneEditController {
 
-  String appName = 'xdZoneEdit';
   String projectName;
   Project project;
   List<ManagedZone> zones;
@@ -30,11 +29,6 @@ class XDZoneEditController {
 
   }
 
-  Future login() => gauth.login().then(
-    (_) {
-    }
-  );
-
   void loadZones() {
 
     dnsClient.dns.managedZones.list(projectName).then((zoneList) {
@@ -42,11 +36,6 @@ class XDZoneEditController {
     })
     .catchError((error) => print(error));
 
-  }
-
-  void logout() {
-    gauth.logout();
-    //isAuthenticated = false;
   }
 
 }
