@@ -4,8 +4,8 @@
       <a class="navbar-brand" href="/">{{appHeader.appName}}</a>
     </div>
     <div class="navbar-right">
-      <button class="btn navbar-btn btn-primary" ng-click="appHeader.login()" ng-if="!appHeader.isAuthenticated"><i class="fa fa-google"></i> Login</button>
-      <button class="btn navbar-btn" ng-click="appHeader.logout()" ng-if="appHeader.isAuthenticated">Logout</button>
+      <button class="btn navbar-btn btn-primary" ng-click="appHeader.login()" ng-if="!appHeader.isAuthenticated"><i class="fa fa-lock"></i></button>
+      <button class="btn navbar-btn" ng-click="appHeader.logout()" ng-if="appHeader.isAuthenticated"><i class="fa fa-unlock"></i> </button>
     </div>
   </div>
 </nav>
