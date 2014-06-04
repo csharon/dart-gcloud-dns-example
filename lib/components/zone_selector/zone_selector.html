@@ -1,0 +1,40 @@
+<div class="container">
+  <div ng-if="zoneSelector.isAuthenticated" class="clearfix">
+
+    <div class="pull-left">
+      <form name="projectForm" novalidate ng-submit="zoneSelector.loadZones()" class="form-inline" role="form">
+
+        <div class="form-group">
+          <label for="projectName" class="sr-only">Google DNS Project:</label>
+          <input type="text"
+                 placeholder="Google DNS Project"
+                 class="form-control"
+                 id="projectName"
+                 name="projectName"
+                 ng-model="zoneSelector.projectName"
+                 required>
+        </div>
+
+        <button class="btn" type="submit" ng-disabled="projectForm.invalid">Load</button>
+      </form>
+    </div>
+
+    <div class="pull-right">
+
+      <div class="btn-group" ng-if="zoneSelector.zones != null">
+        <button type="button" class="btn btn-info">{{zoneSelector.selectedZoneName}}</button>
+        <button class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+          <span class="caret"></span>
+          <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <li ng-repeat="zone in zoneSelector.zones"><a href="#" ng-click="zoneSelector.selectZone(zone)">{{zone.dnsName}}</a></li>
+          <li class="divider"></li>
+          <li><a href="#">Create New Zone...</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+</div>
