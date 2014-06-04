@@ -6,25 +6,11 @@
   <title>xdZoneEdit</title>
   <link rel="stylesheet" href="main.css">
 </head>
-<body app-controller ng-cloak>
+<body ng-cloak>
 <app-header></app-header>
 
-<div ng-if="appCtrl.isAuthenticated">
-  <form name="projectForm" novalidate ng-submit="appCtrl.loadZones()">
-    <label for="projectName">Project:</label>
-    <input type="text" id="projectName" name="projectName" ng-model="appCtrl.projectName" required>
+<zone-selector></zone-selector>
 
-    <button type="submit" ng-disabled="projectForm.invalid">Load Project</button>
-  </form>
-  <hr>
-  <!--<label ng-if="appCtrl.project != null">{{appCtrl.project | json}}</label>-->
-  <div ng-if="appCtrl.zones != null">
-    <h3>Zones</h3>
-    <ul>
-      <li ng-repeat="zone in appCtrl.zones">{{zone.dnsName}}</li>
-    </ul>
-  </div>
-</div>
 
 <script src="packages/shadow_dom/shadow_dom.min.js"></script>
 <script type="application/dart" src="main.dart"></script>
