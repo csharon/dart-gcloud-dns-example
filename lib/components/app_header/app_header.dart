@@ -3,7 +3,7 @@ library xdZoneEdit.components.app_header.app_header;
 import 'package:angular/angular.dart';
 import 'package:xdZoneEdit/oauth/google_oauth2_service.dart';
 
-@NgComponent(
+@Component(
   selector: 'app-header',
   templateUrl: 'packages/xdZoneEdit/components/app_header/app_header.html',
   cssUrl: 'packages/xdZoneEdit/components/app_header/app_header.css',

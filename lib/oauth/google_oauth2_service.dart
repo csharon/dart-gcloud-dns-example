@@ -6,7 +6,7 @@ import "package:google_oauth2_client/google_oauth2_browser.dart";
 import 'package:google_dns_v1beta1_api/dns_v1beta1_api_browser.dart';
 import 'package:google_dns_v1beta1_api/dns_v1beta1_api_client.dart';
 
-@NgInjectableService()
+@Injectable()
 class GoogleOauth2Service {
 
 
