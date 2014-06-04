@@ -30,11 +30,15 @@
         <ul class="dropdown-menu" role="menu">
           <li ng-repeat="zone in zoneSelector.zones"><a href="#" ng-click="zoneSelector.selectZone(zone)">{{zone.dnsName}}</a></li>
           <li class="divider"></li>
-          <li><a href="#">Create New Zone...</a></li>
+          <li><a href="#createZoneModal" data-toggle="modal">Create New Zone...</a></li>
         </ul>
       </div>
 
     </div>
 
   </div>
+
+  <!-- Create Zone Modal -->
+  <zone-form></zone-form>
+
 </div>
