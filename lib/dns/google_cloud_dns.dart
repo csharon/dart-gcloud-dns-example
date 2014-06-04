@@ -6,7 +6,7 @@ import 'package:google_dns_v1beta1_api/dns_v1beta1_api_browser.dart' as dnsclien
 import 'package:google_dns_v1beta1_api/dns_v1beta1_api_client.dart';
 import 'package:xdZoneEdit/oauth/google_oauth2_service.dart';
 
-@NgInjectableService()
+@Injectable()
 class GoogleCloudDns {
 
   GoogleOauth2Service gas;

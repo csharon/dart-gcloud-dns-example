@@ -4,7 +4,7 @@ import 'package:angular/angular.dart';
 import 'dart:html';
 import 'dart:convert' show JSON;
 
-@NgInjectableService()
+@Injectable()
 class LocalStorageService {
 
   void save(String key, data) {
