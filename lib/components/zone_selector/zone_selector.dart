@@ -5,6 +5,8 @@ import 'dart:async' show Future;
 import 'package:google_dns_v1beta1_api/dns_v1beta1_api_client.dart';
 import 'package:xdZoneEdit/oauth/google_oauth2_service.dart';
 import 'package:xdZoneEdit/dns/google_cloud_dns.dart';
+import 'package:xdZoneEdit/dns/project_manager.dart';
+import 'package:xdZoneEdit/dns/zone_manager.dart';
 import 'package:bootjack/bootjack.dart';
 
 @Component(
@@ -17,19 +19,21 @@ import 'package:bootjack/bootjack.dart';
 class ZoneSelector {
 
   GoogleOauth2Service gas;
-  String projectName;
-  Project project;
-  ManagedZone selectedZone;
-  List<ManagedZone> zones;
   GoogleCloudDns dnsClient;
+  ProjectManager pm;
+  String projectName;
+  ZoneManager zm;
 
   String get selectedZoneName {
-    if (selectedZone == null) {
+    if (zm.zone == null) {
       return 'Select Zone';
     } else {
-      return selectedZone.dnsName;
+      return zm.zone.dnsName;
     }
   }
+
+  List<ManagedZone> get zones => zm.zones;
+  ManagedZone get selectedZone => zm.zone;
 
   bool get isAuthenticated {
     if(gas.isAuthenticated) {
@@ -38,21 +42,23 @@ class ZoneSelector {
     return gas.isAuthenticated;
   }
 
-  ZoneSelector(this.gas, this.dnsClient) {
+  ZoneSelector(GoogleOauth2Service this.gas, GoogleCloudDns this.dnsClient, ZoneManager this.zm, ProjectManager this.pm) {
     Dropdown.use();
+    Modal.use();
+    Transition.use();
   }
 
   void loadZones() {
-
-    dnsClient.dns.managedZones.list(projectName).then((zoneList) {
-      zones = zoneList.managedZones;
-    })
-    .catchError((error) => print(error));
+    Future.wait([pm.loadProject(projectName), zm.loadZones(projectName)])
+      .then((List responses) {
+        print("Project and Zones loaded.");
+      })
+      .catchError((error) => print(error));
 
   }
 
   void selectZone(ManagedZone zone) {
-    selectedZone = zone;
+    zm.zone = zone;
   }
 
 
