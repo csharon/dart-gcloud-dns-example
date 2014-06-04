@@ -1,0 +1,52 @@
+<div id="createZoneModal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h3>New Managed Zone</h3>
+      </div>
+      <div class="modal-body">
+        <form name="zoneform" novalidate class="form-horizontal" role="form">
+          <div class="form-group">
+            <label for="nameInput" class="col-sm-2 control-label">Zone Name</label>
+            <div class="col-sm-10">
+              <input type="text"
+                     class="form-control"
+                     ng-model="zoneForm.zone.name"
+                     id="nameInput"
+                     name="name"
+                     placeholder="Name"
+                     required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="dnsNameInput" class="col-sm-2 control-label">Domain Name</label>
+            <div class="col-sm-10">
+              <input type="text"
+                     class="form-control"
+                     ng-model="zoneForm.zone.dnsName"
+                     id="dnsNameInput"
+                     name="dnsName"
+                     placeholder="Name"
+                     required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="descriptionInput" class="col-sm-2 control-label">Description</label>
+            <div class="col-sm-10">
+              <textarea class="form-control"
+                        ng-model="zoneForm.zone.description"
+                        id="descriptionInput"
+                        rows="3"
+                        placeholder="Description"></textarea>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-default" data-dismiss="modal">Close</button>
+        <button class="btn btn-primary" ng-disabled="zoneform.invalid" ng-click="zoneForm.create()">Create</button>
+      </div>
+    </div>
+  </div>
+</div>

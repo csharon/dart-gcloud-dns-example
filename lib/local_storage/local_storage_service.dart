@@ -11,7 +11,7 @@ class LocalStorageService {
     window.localStorage[key] = JSON.encode(data);
   }
 
-  Map get(String key) {
+  Object get(String key) {
     if (window.localStorage.containsKey(key)) {
       return JSON.decode(window.localStorage[key]);
     }
