@@ -28,6 +28,7 @@ class ZoneManager {
     ManagedZone newZone = new ManagedZone.fromJson(item);
     return dnsService.dns.managedZones.create(newZone, projectName).then(
       (ManagedZone resp) {
+        zones.add(zone);
         zone = resp;
       }
     ).catchError((error) => print(error));
