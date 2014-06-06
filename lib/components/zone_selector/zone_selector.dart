@@ -21,6 +21,7 @@ class ZoneSelector {
   GoogleOauth2Service gas;
   GoogleCloudDns dnsClient;
   ProjectManager pm;
+  @NgTwoWay('project-name')
   String projectName;
   ZoneManager zm;
 
@@ -34,6 +35,8 @@ class ZoneSelector {
 
   List<ManagedZone> get zones => zm.zones;
   ManagedZone get selectedZone => zm.zone;
+
+  List<Project> get projects => pm.projects;
 
   bool get isAuthenticated {
     if(gas.isAuthenticated) {
@@ -61,5 +64,9 @@ class ZoneSelector {
     zm.zone = zone;
   }
 
+  void selectProject(Project project) {
+    pm.project = project;
+    projectName = pm.project.id;
+  }
 
 }
