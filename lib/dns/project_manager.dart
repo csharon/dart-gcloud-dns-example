@@ -20,7 +20,13 @@ class ProjectManager {
 
   List<Project> get projects {
     if (_projects == null) {
-      _projects = localStore.get(PROJECT_KEY);
+      Map _localStore = localStore.get(PROJECT_KEY);
+      if (_localStore != null) {
+        _projects = new List<Project>();
+        _localStore.forEach((proj) => _projects.add(new Project.fromJson(proj)));
+      }
+
+
     } else {
       return _projects;
     }
