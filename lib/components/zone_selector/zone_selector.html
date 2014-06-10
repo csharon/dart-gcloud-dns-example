@@ -1,7 +1,7 @@
 <div class="container">
   <div ng-if="zoneSelector.isAuthenticated" class="clearfix row">
 
-    <div class="col-lg-6">
+    <div class="col-lg-4">
       <form name="projectForm" novalidate ng-submit="zoneSelector.loadZones()" class="form-inline" role="form">
 
         <div class="form-group">
@@ -14,7 +14,8 @@
                    name="projectName"
                    ng-model="zoneSelector.projectName"
                    required>
-            <span class="input-group-btn">
+            <div class="input-group-btn">
+              <button class="btn btn-info" type="submit" ng-disabled="projectForm.invalid">Load</button>
               <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
                 <span class="caret"></span>
                 <span class="sr-only">Toggle Dropdown</span>
@@ -23,15 +24,13 @@
                 <li ng-repeat="project in zoneSelector.projects"><a href="#" ng-click="zoneSelector.selectProject(project)">{{project.id}}</a></li>
 
               </ul>
-            </span>
+            </div>
 
 
           </div>
 
-
         </div>
 
-        <button class="btn" type="submit" ng-disabled="projectForm.invalid">Load</button>
       </form>
     </div>
 

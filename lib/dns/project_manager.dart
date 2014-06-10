@@ -14,18 +14,14 @@ class ProjectManager {
   LocalStorageService localStore;
   static const PROJECT_KEY = 'projects';
 
-  ProjectManager(this.dnsService, this.localStore);
+  ProjectManager(this.dnsService, this.localStore) {
+   loadProjects();
+  }
 
   List<Project> _projects;
 
   List<Project> get projects {
     if (_projects == null) {
-      Map _localStore = localStore.get(PROJECT_KEY);
-      if (_localStore != null) {
-        _projects = new List<Project>();
-        _localStore.forEach((proj) => _projects.add(new Project.fromJson(proj)));
-      }
-
 
     } else {
       return _projects;
@@ -36,24 +32,37 @@ class ProjectManager {
   Project get project => _project;
   void set project(Project proj) {
     _project = proj;
-    if (projects == null) {
-      _projects = new List<Project>();
-      _projects.add(_project);
-      localStore.save(PROJECT_KEY, _projects);
-    } else {
-      if (!_projects.contains(_project)) {
-        _projects.add(_project);
-        localStore.save(PROJECT_KEY, _projects);
-      }
-    }
+
   }
 
-  Future<Project> loadProject(String name) {
+  Future<Project> getProjectFromName(String name) {
     return dnsService.dns.projects.get(name).then(
       (Project resp) {
         project = resp;
+        Project existing = _projects.firstWhere((item) => item.id == resp.id, orElse: () => null);
+        if (existing != null) {
+          _projects.removeWhere((item) => item.id == existing.id);
+        }
+        _projects.add(resp);
+        localStore.save(PROJECT_KEY, _projects);
       }
     ).catchError((error) => print(error));
+  }
+
+  void loadProjects() {
+    _projects = new List<Project>();
+    Map _localStore = localStore.get(PROJECT_KEY);
+    if (_localStore != null) {
+      _localStore.forEach((proj) {
+        var p = new Project.fromJson(proj);
+        Project existing = _projects.firstWhere((item) => item.id == p.id, orElse: () => null);
+        if (existing == null) {
+
+          _projects.add(p);
+        }
+
+      });
+    }
   }
 
 }
