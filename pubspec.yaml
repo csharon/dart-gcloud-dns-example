@@ -5,6 +5,7 @@ dependencies:
   browser: any
   shadow_dom: any
   google_oauth2_client: '>=0.3.4'
+  google_oauth2_v2_api: ">=0.4.13 <0.5.0"
   google_dns_v1beta1_api: ">=0.4.0 <0.5.0"
   bootjack: any
   sass: ">=0.3.0 <0.4.0"

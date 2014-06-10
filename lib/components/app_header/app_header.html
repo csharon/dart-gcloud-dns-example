@@ -3,9 +3,19 @@
     <div class="navbar-header">
       <a class="navbar-brand" href="/">{{appHeader.appName}}</a>
     </div>
-    <div class="navbar-right">
-      <button class="btn navbar-btn btn-primary" ng-click="appHeader.login()" ng-if="!appHeader.isAuthenticated"><i class="fa fa-lock"></i></button>
-      <button class="btn navbar-btn" ng-click="appHeader.logout()" ng-if="appHeader.isAuthenticated"><i class="fa fa-unlock"></i> </button>
-    </div>
+    <ul class="nav navbar-nav navbar-right">
+
+      <li ng-if="!appHeader.isAuthenticated"><button class="btn navbar-btn btn-primary" ng-click="appHeader.login()"><i class="fa fa-lock"></i></button></li>
+      <li ng-if="appHeader.isAuthenticated"><img ng-src="{{appHeader.userPic}}" class="img-circle"></li>
+      <li class="dropdown" ng-if="appHeader.isAuthenticated">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="#" ng-click="appHeader.logout()">Logout</a></li>
+        </ul>
+      </li>
+    </ul>
+      <!--<button class="btn navbar-btn btn-link" ng-click="appHeader.logout()" ng-if="appHeader.isAuthenticated"><i class="fa fa-unlock"></i> </button>-->
   </div>
 </nav>

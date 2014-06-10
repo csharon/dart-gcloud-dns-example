@@ -16,7 +16,7 @@ class GoogleCloudDns {
 
   void createDnsClient() {
     dns = new dnsclient.Dns(gas.auth);
-    dns.oauth_token = gas.auth.token.data;
+    dns.oauth_token = gas.accessToken;
 
   }
 
