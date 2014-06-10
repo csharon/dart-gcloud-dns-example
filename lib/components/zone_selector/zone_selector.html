@@ -16,7 +16,7 @@
                    required>
             <div class="input-group-btn">
               <button class="btn btn-info" type="submit" ng-disabled="projectForm.invalid">Load</button>
-              <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+              <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" ng-if="zoneSelector.projects.isNotEmpty">
                 <span class="caret"></span>
                 <span class="sr-only">Toggle Dropdown</span>
               </button>
