@@ -52,7 +52,7 @@ class ZoneSelector {
   }
 
   void loadZones() {
-    Future.wait([pm.loadProject(projectName), zm.loadZones(projectName)])
+    Future.wait([pm.getProjectFromName(projectName), zm.loadZones(projectName)])
       .then((List responses) {
         print("Project and Zones loaded.");
       })
