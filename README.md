@@ -1,4 +1,4 @@
-dart-gcloud-dns-example
+dart-gcloud-dns
 ==========
 
 Angular Dart example application for editing Google Cloud DNS zones using:
