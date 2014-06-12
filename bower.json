@@ -1,7 +1,7 @@
 {
-  "name": "xdZoneEdit",
+  "name": "dns_editor",
   "version": "0.0.1",
-  "homepage": "https://github.com/csharon/xdZoneEdit",
+  "homepage": "https://github.com/csharon/dart-gcloud-dns",
   "authors": [
     "Chris Sharon <chris@xdoji.com>"
   ],
@@ -26,7 +26,6 @@
     "tests"
   ],
   "dependencies": {
-    "jquery": "~2.1.1",
     "font-awesome": "~4.1.0",
     "sass-bootstrap": "~3.0.2"
   }
