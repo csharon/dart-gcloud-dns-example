@@ -1,0 +1,26 @@
+<div class="container zone-record-list" ng-if="ctrl.records.isNotEmpty">
+  <div class="panel panel-default">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <td>Name</td>
+        <td>Type</td>
+        <td>TTL</td>
+        <td>Value</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="record in ctrl.records">
+        <td>{{record.name}}</td>
+        <td>{{record.type}}</td>
+        <td>{{record.ttl}}</td>
+        <td>
+          <ul class="list-unstyled">
+            <li ng-repeat="rrdata in record.rrdatas">{{rrdata}}</li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>

@@ -1,5 +1,5 @@
 <div class="container">
-  <div ng-if="zoneSelector.isAuthenticated" class="clearfix row">
+  <div class="row" ng-if="zoneSelector.isAuthenticated">
 
     <div class="col-lg-4">
       <form name="projectForm" novalidate ng-submit="zoneSelector.loadZones()" class="form-inline" role="form">
@@ -55,5 +55,4 @@
 
   <!-- Create Zone Modal -->
   <zone-form></zone-form>
-
 </div>
