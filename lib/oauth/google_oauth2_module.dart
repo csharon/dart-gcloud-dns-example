@@ -1,7 +1,7 @@
-library xdZoneEdit.oauth.google_oauth2_module;
+library dns_editor.oauth.google_oauth2_module;
 
 import 'package:angular/angular.dart';
-import 'package:xdZoneEdit/oauth/google_oauth2_service.dart';
+import 'package:dns_editor/oauth/google_oauth2_service.dart';
 
 class GoogleOauth2Module extends Module {
   GoogleOauth2Module() {

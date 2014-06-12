@@ -1,7 +1,7 @@
-name: xdZoneEdit
+name: dns_editor
 version: 0.0.1
 dependencies:
-  angular: '>=0.11.0'
+  angular: '>=0.12.0'
   browser: any
   shadow_dom: any
   google_oauth2_client: '>=0.3.4'

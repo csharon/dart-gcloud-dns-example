@@ -1,4 +1,4 @@
-library xdZoneEdit.oauth.google_oauth2_service;
+library dns_editor.oauth.google_oauth2_service;
 
 import 'package:angular/angular.dart';
 import 'dart:async' show Future;

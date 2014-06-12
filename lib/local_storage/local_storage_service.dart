@@ -1,4 +1,4 @@
-library xdZoneEdit.local_storage.local_storage_service;
+library dns_editor.local_storage.local_storage_service;
 
 import 'package:angular/angular.dart';
 import 'dart:html';

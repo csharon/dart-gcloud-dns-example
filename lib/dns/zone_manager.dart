@@ -1,10 +1,10 @@
-library xdZoneEdit.dns.zone_manager;
+library dns_editor.dns.zone_manager;
 
 import 'package:angular/angular.dart';
 import 'dart:async' show Future;
 import 'package:google_dns_v1beta1_api/dns_v1beta1_api_browser.dart' as dnsclient;
 import 'package:google_dns_v1beta1_api/dns_v1beta1_api_client.dart';
-import 'package:xdZoneEdit/dns/google_cloud_dns.dart';
+import 'package:dns_editor/dns/google_cloud_dns.dart';
 
 @Injectable()
 class ZoneManager {
