@@ -1,58 +1,62 @@
-<div class="container">
-  <div class="row" ng-if="zoneSelector.isAuthenticated">
+<div class="container" ng-if="zoneSelector.isAuthenticated">
+  <div class="row">
 
-    <div class="col-lg-4">
-      <form name="projectForm" novalidate ng-submit="zoneSelector.loadZones()" class="form-inline" role="form">
+    <form name="projectForm" novalidate ng-submit="zoneSelector.loadZones()" class="form-inline col-xs-12 col-sm-6 col-md-4" role="form">
 
-        <div class="form-group">
-          <label for="projectName" class="sr-only">Google DNS Project:</label>
-          <div class="input-group">
-            <input type="text"
-                   placeholder="Google DNS Project"
-                   class="form-control"
-                   id="projectName"
-                   name="projectName"
-                   ng-model="zoneSelector.projectName"
-                   required>
-            <div class="input-group-btn">
-              <button class="btn btn-info" type="submit" ng-disabled="projectForm.invalid">Load</button>
-              <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" ng-if="zoneSelector.projects.isNotEmpty">
-                <span class="caret"></span>
-                <span class="sr-only">Toggle Dropdown</span>
-              </button>
-              <ul class="dropdown-menu" role="menu">
-                <li ng-repeat="project in zoneSelector.projects"><a href="#" ng-click="zoneSelector.selectProject(project)">{{project.id}}</a></li>
+      <div class="form-group">
+        <label for="projectName" class="sr-only">Google DNS Project:</label>
+        <div class="input-group">
+          <input type="text"
+                 placeholder="Google DNS Project"
+                 class="form-control"
+                 id="projectName"
+                 name="projectName"
+                 ng-model="zoneSelector.projectName"
+                 required>
+          <div class="input-group-btn">
+            <button class="btn btn-info" type="submit" ng-disabled="projectForm.invalid">Load</button>
+            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" ng-if="zoneSelector.projects.isNotEmpty">
+              <span class="caret"></span>
+              <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              <li ng-repeat="project in zoneSelector.projects"><a href="#" ng-click="zoneSelector.selectProject(project)">{{project.id}}</a></li>
 
-              </ul>
-            </div>
-
-
+            </ul>
           </div>
+
 
         </div>
 
-      </form>
-    </div>
-
-    <div class="pull-right">
-
-      <div class="btn-group" ng-if="zoneSelector.zones != null">
-        <button type="button" class="btn btn-info">{{zoneSelector.selectedZoneName}}</button>
-        <button class="btn btn-info dropdown-toggle" data-toggle="dropdown">
-          <span class="caret"></span>
-          <span class="sr-only">Toggle Dropdown</span>
-        </button>
-        <ul class="dropdown-menu" role="menu">
-          <li ng-repeat="zone in zoneSelector.zones"><a href="#" ng-click="zoneSelector.selectZone(zone)">{{zone.dnsName}}</a></li>
-          <li class="divider"></li>
-          <li><a href="#createZoneModal" data-toggle="modal">Create New Zone...</a></li>
-        </ul>
       </div>
 
+    </form>
+  </div>
+
+  <div class="row">
+
+    <div class="btn-group col-xs-12 col-sm-6" ng-if="zoneSelector.zones != null">
+      <button type="button" class="btn btn-info">{{zoneSelector.selectedZoneName}}</button>
+      <button class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+        <span class="caret"></span>
+        <span class="sr-only">Toggle Dropdown</span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+        <li ng-repeat="zone in zoneSelector.zones"><a href="#" ng-click="zoneSelector.selectZone(zone)">{{zone.dnsName}}</a></li>
+        <li class="divider"></li>
+        <li><a href="#createZoneModal" data-toggle="modal">Create New Zone...</a></li>
+      </ul>
     </div>
+
+    <button type="button" class="btn btn-danger"
+            ng-click="zoneSelector.deleteZone()"
+            ng-if="zoneSelector.selectedZone != null">Delete Zone</button>
 
   </div>
 
-  <!-- Create Zone Modal -->
-  <zone-form></zone-form>
+
+
+
 </div>
+<!-- Create Zone Modal -->
+<zone-form></zone-form>

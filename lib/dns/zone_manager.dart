@@ -21,7 +21,10 @@ class ZoneManager {
   ManagedZone get zone => _zone;
 
   void set zone(ManagedZone mz) {
-    listRecords(_projectName, mz.id);
+    if (mz != null) {
+      listRecords(_projectName, mz.id);
+    }
+    records = null;
     _zone = mz;
   }
 
@@ -51,6 +54,17 @@ class ZoneManager {
       }
     ).catchError(
        (error) => print(error)
+    );
+  }
+
+  Future<Map> deleteZone() {
+    return dnsService.dns.managedZones.delete(_projectName, zone.id).then(
+        (Map resp) {
+          zones.removeWhere((item) => item.id == zone.id);
+          zone = null;
+        }
+    ).catchError(
+            (error) => print(error)
     );
   }
 }
