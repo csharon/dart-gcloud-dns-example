@@ -9,6 +9,7 @@ import 'package:xdZoneEdit/dns/zone_manager.dart';
 import 'package:xdZoneEdit/components/app_header/app_header.dart';
 import 'package:xdZoneEdit/components/zone_selector/zone_selector.dart';
 import 'package:xdZoneEdit/components/zone_form/zone_form.dart';
+import 'package:xdZoneEdit/components/zone_record_list/zone_record_list.dart';
 
 class XDZoneEditModule extends Module {
   XDZoneEditModule() {
@@ -20,5 +21,6 @@ class XDZoneEditModule extends Module {
     type(AppHeader);
     type(ZoneSelector);
     type(ZoneForm);
+    type(ZoneRecordList);
   }
 }

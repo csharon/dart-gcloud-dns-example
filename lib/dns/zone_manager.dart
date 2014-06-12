@@ -14,9 +14,19 @@ class ZoneManager {
   ZoneManager(this.dnsService);
 
   List<ManagedZone> zones;
-  ManagedZone zone;
+  List<ResourceRecordSet> records;
+  String _projectName;
+  ManagedZone _zone;
+
+  ManagedZone get zone => _zone;
+
+  void set zone(ManagedZone mz) {
+    listRecords(_projectName, mz.id);
+    _zone = mz;
+  }
 
   Future<ManagedZone> loadZones(String name) {
+    _projectName = name;
     return dnsService.dns.managedZones.list(name).then(
       (ManagedZonesListResponse resp) {
         zones = resp.managedZones;
@@ -32,5 +42,15 @@ class ZoneManager {
         zone = resp;
       }
     ).catchError((error) => print(error));
+  }
+
+  Future<ResourceRecordSet> listRecords(String projectName, String zoneName) {
+    return dnsService.dns.resourceRecordSets.list(projectName, zoneName).then(
+      (ResourceRecordSetsListResponse resp) {
+        records = resp.rrsets;
+      }
+    ).catchError(
+       (error) => print(error)
+    );
   }
 }
