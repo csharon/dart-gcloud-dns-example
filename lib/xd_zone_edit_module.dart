@@ -10,6 +10,7 @@ import 'package:dns_editor/components/app_header/app_header.dart';
 import 'package:dns_editor/components/zone_selector/zone_selector.dart';
 import 'package:dns_editor/components/zone_form/zone_form.dart';
 import 'package:dns_editor/components/zone_record_list/zone_record_list.dart';
+import 'package:dns_editor/components/zone_confirm_delete/zone_confirm_delete.dart';
 
 class XDZoneEditModule extends Module {
   XDZoneEditModule() {
@@ -22,5 +23,6 @@ class XDZoneEditModule extends Module {
     type(ZoneSelector);
     type(ZoneForm);
     type(ZoneRecordList);
+    type(ZoneConfirmDelete);
   }
 }

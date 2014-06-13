@@ -1,0 +1,23 @@
+<div id="zoneConfirmDeleteModal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h3>Confirm Zone Deletion</h3>
+      </div>
+      <div class="modal-body">
+        <p>
+          <strong>Are you sure you want to delete {{ctrl.selectedZone.dnsName}}?</strong><br>
+          The zone will be permanently deleted and all records will be lost.<br>
+          That's a lot of responsibility for someone to take on.<br>
+          So give it some serious thought before clicking delete.<br>
+          Seriously, have a cup of coffee and give it some thought, we'll wait.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button class="btn btn-danger" ng-click="ctrl.deleteZone()">Delete Zone</button>
+      </div>
+    </div>
+  </div>
+</div>
