@@ -45,7 +45,7 @@ class ZoneSelector {
     return gas.isAuthenticated;
   }
 
-  ZoneSelector(GoogleOauth2Service this.gas, GoogleCloudDns this.dnsClient, ZoneManager this.zm, ProjectManager this.pm) {
+  ZoneSelector(this.gas, this.dnsClient, this.zm, this.pm) {
     Dropdown.use();
     Modal.use();
     Transition.use();
