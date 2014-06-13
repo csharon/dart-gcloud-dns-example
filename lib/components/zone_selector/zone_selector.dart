@@ -69,14 +69,6 @@ class ZoneSelector {
     projectName = pm.project.id;
   }
 
-  void deleteZone() {
-    zm.deleteZone().then(
-        (_) {
-          print('zone deleted');
-        }
-    ).catchError(
-       (error) => print(error)
-    );
-  }
+
 
 }
