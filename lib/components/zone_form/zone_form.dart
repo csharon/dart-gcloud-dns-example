@@ -22,7 +22,7 @@ class ZoneForm {
   ZoneManager zm;
 
 
-  ZoneForm(ProjectManager this.pm, ZoneManager this.zm) {
+  ZoneForm(this.pm, this.zm) {
     Modal.use();
     Alert.use();
     Transition.use();

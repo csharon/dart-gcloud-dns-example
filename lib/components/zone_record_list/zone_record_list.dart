@@ -4,7 +4,7 @@ import 'package:angular/angular.dart';
 import 'dart:async' show Future;
 import 'package:google_dns_v1beta1_api/dns_v1beta1_api_client.dart';
 import 'package:dns_editor/dns/zone_manager.dart';
-//import 'package:bootjack/bootjack.dart';
+import 'package:bootjack/bootjack.dart';
 
 @Component(
     selector: 'zone-record-list',
@@ -18,8 +18,10 @@ class ZoneRecordList {
   ZoneManager zm;
   List<ResourceRecordSet> get records => zm.records;
 
-  ZoneRecordList(ZoneManager this.zm){
-
+  ZoneRecordList(this.zm){
+    Modal.use();
+    Alert.use();
+    Transition.use();
   }
 
 }

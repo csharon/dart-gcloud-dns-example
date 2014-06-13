@@ -1,5 +1,7 @@
 <div class="col-xs-12 zone-record-list" ng-if="ctrl.records.isNotEmpty">
+  <a href="#createResourceRecord" data-toggle="modal" class="btn btn-success"><i class="fa fa-plus-circle"></i></a>
   <div class="panel panel-default">
+
   <table class="table table-striped">
     <thead>
       <tr>
@@ -24,3 +26,5 @@
   </table>
   </div>
 </div>
+
+<resource-record-form></resource-record-form>
