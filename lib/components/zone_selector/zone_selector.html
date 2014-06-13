@@ -48,9 +48,9 @@
       </ul>
     </div>
 
-    <button type="button" class="btn btn-danger"
-            ng-click="zoneSelector.deleteZone()"
-            ng-if="zoneSelector.selectedZone != null">Delete Zone</button>
+    <a href="#zoneConfirmDeleteModal" class="btn btn-danger"
+       data-toggle="modal"
+       ng-if="zoneSelector.selectedZone != null">Delete Zone</a>
 
   </div>
 
@@ -60,3 +60,4 @@
 </div>
 <!-- Create Zone Modal -->
 <zone-form></zone-form>
+<zone-confirm-delete></zone-confirm-delete>
