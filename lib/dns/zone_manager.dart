@@ -15,21 +15,21 @@ class ZoneManager {
 
   List<ManagedZone> zones;
   List<ResourceRecordSet> records;
-  String _projectName;
+  String projectName;
   ManagedZone _zone;
 
   ManagedZone get zone => _zone;
 
   void set zone(ManagedZone mz) {
     if (mz != null) {
-      listRecords(_projectName, mz.id);
+      listRecords(projectName, mz.id);
     }
     records = null;
     _zone = mz;
   }
 
   Future<ManagedZone> loadZones(String name) {
-    _projectName = name;
+    projectName = name;
     return dnsService.dns.managedZones.list(name).then(
       (ManagedZonesListResponse resp) {
         zones = resp.managedZones;
@@ -47,8 +47,8 @@ class ZoneManager {
     ).catchError((error) => print(error));
   }
 
-  Future<ResourceRecordSet> listRecords(String projectName, String zoneName) {
-    return dnsService.dns.resourceRecordSets.list(projectName, zoneName).then(
+  Future<ResourceRecordSet> listRecords(String project, String zoneName) {
+    return dnsService.dns.resourceRecordSets.list(project, zoneName).then(
       (ResourceRecordSetsListResponse resp) {
         records = resp.rrsets;
       }
@@ -58,7 +58,7 @@ class ZoneManager {
   }
 
   Future<Map> deleteZone() {
-    return dnsService.dns.managedZones.delete(_projectName, zone.id).then(
+    return dnsService.dns.managedZones.delete(projectName, zone.id).then(
         (Map resp) {
           zones.removeWhere((item) => item.id == zone.id);
           zone = null;

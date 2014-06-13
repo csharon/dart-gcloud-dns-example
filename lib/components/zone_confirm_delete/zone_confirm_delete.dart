@@ -19,7 +19,7 @@ class ZoneConfirmDelete {
   ZoneManager zm;
   ManagedZone get selectedZone => zm.zone;
 
-  ZoneConfirmDelete(ZoneManager this.zm) {
+  ZoneConfirmDelete(this.zm) {
     Modal.use();
     Alert.use();
     Transition.use();
