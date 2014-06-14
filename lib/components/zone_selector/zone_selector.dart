@@ -25,6 +25,7 @@ class ZoneSelector {
   String projectName;
   ZoneManager zm;
 
+
   String get selectedZoneName {
     if (zm.zone == null) {
       return 'Select Zone';
@@ -56,7 +57,11 @@ class ZoneSelector {
       .then((List responses) {
         print("Project and Zones loaded.");
       })
-      .catchError((error) => print(error));
+      .catchError(
+        (error){
+          print(error);
+        }
+      );
 
   }
 
