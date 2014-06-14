@@ -14,13 +14,21 @@
                  ng-model="zoneSelector.projectName"
                  required>
           <div class="input-group-btn">
-            <button class="btn btn-info" type="submit" ng-disabled="projectForm.invalid">Load</button>
+            <button class="btn btn-info"
+                    type="submit"
+                    ng-disabled="projectForm.invalid">
+              <span ng-if="zoneSelector.zm.loadingZones"><i class="fa fa-spin fa-spinner fa-1x"></i></span>
+              <span ng-if="!zoneSelector.zm.loadingZones">Load</span>
+            </button>
+
             <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" ng-if="zoneSelector.projects.isNotEmpty">
               <span class="caret"></span>
               <span class="sr-only">Toggle Dropdown</span>
             </button>
             <ul class="dropdown-menu" role="menu">
-              <li ng-repeat="project in zoneSelector.projects"><a href="#" ng-click="zoneSelector.selectProject(project)">{{project.id}}</a></li>
+              <li ng-repeat="project in zoneSelector.projects">
+                <a href="#" ng-click="zoneSelector.selectProject(project)">{{project.id}}</a>
+              </li>
 
             </ul>
           </div>
@@ -48,9 +56,13 @@
       </ul>
     </div>
 
+    <span ng-if="zoneSelector.zm.loadingRecords"><i class="fa fa-spin fa-spinner fa-1x"></i></span>
     <a href="#zoneConfirmDeleteModal" class="btn btn-danger"
        data-toggle="modal"
-       ng-if="zoneSelector.selectedZone != null">Delete Zone</a>
+       ng-if="zoneSelector.selectedZone != null">
+      <span ng-if="zoneSelector.zm.deletingZone"><i class="fa fa-spin fa-spinner fa-1x"></i></span>
+      <span ng-if="!zoneSelector.zm.deletingZone">Delete Zone</span>
+    </a>
 
   </div>
 
