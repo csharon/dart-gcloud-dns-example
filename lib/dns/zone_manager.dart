@@ -17,6 +17,10 @@ class ZoneManager {
   List<ResourceRecordSet> records;
   String projectName;
   ManagedZone _zone;
+  bool loadingZones = false;
+  bool loadingRecords = false;
+  bool creatingZone = false;
+  bool deletingZone = false;
 
   ManagedZone get zone => _zone;
 
@@ -29,42 +33,62 @@ class ZoneManager {
   }
 
   Future<ManagedZone> loadZones(String name) {
+    loadingZones = true;
     projectName = name;
     return dnsService.dns.managedZones.list(name).then(
       (ManagedZonesListResponse resp) {
         zones = resp.managedZones;
+        loadingZones = false;
       }
-    ).catchError((error) => print(error));
+    ).catchError((error){
+      print(error);
+      loadingZones = false;
+    });
   }
 
   Future<ManagedZone> create(String projectName, Map item) {
+    creatingZone = true;
     ManagedZone newZone = new ManagedZone.fromJson(item);
     return dnsService.dns.managedZones.create(newZone, projectName).then(
       (ManagedZone resp) {
         zones.add(zone);
         zone = resp;
+        creatingZone = false;
       }
-    ).catchError((error) => print(error));
+    ).catchError((error){
+      print(error);
+      creatingZone = false;
+    });
   }
 
   Future<ResourceRecordSet> listRecords(String project, String zoneName) {
+    loadingRecords = true;
     return dnsService.dns.resourceRecordSets.list(project, zoneName).then(
       (ResourceRecordSetsListResponse resp) {
         records = resp.rrsets;
+        loadingRecords = false;
       }
     ).catchError(
-       (error) => print(error)
+       (error){
+         print(error);
+         loadingRecords = false;
+       }
     );
   }
 
   Future<Map> deleteZone() {
+    deletingZone = true;
     return dnsService.dns.managedZones.delete(projectName, zone.id).then(
         (Map resp) {
           zones.removeWhere((item) => item.id == zone.id);
           zone = null;
+          deletingZone = false;
         }
     ).catchError(
-            (error) => print(error)
+       (error){
+         print(error);
+         deletingZone = false;
+       }
     );
   }
 }

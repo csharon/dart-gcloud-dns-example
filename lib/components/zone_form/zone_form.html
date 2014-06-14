@@ -45,7 +45,10 @@
       </div>
       <div class="modal-footer">
         <button class="btn btn-default" data-dismiss="modal">Close</button>
-        <button class="btn btn-primary" ng-disabled="zoneform.invalid" ng-click="zoneForm.create()">Create</button>
+        <button class="btn btn-primary" ng-disabled="zoneform.invalid" ng-click="zoneForm.create()">
+          <span ng-if="zoneForm.zm.creatingZone"><i class="fa fa-spin fa-spinner fa-1x"></i></span>
+          <span ng-if="!zoneForm.zm.creatingZone">Create</span>
+        </button>
       </div>
     </div>
   </div>
