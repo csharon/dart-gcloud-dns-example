@@ -6,6 +6,8 @@ import 'package:google_dns_v1beta1_api/dns_v1beta1_api_browser.dart' as dnsclien
 import 'package:google_dns_v1beta1_api/dns_v1beta1_api_client.dart';
 import 'package:dns_editor/dns/google_cloud_dns.dart';
 import 'package:dns_editor/dns/zone_manager.dart';
+import 'package:dns_editor/dns/models/dns_record.dart';
+import 'package:dns_editor/dns/models/soa_record.dart';
 
 @Injectable()
 class ChangeManager {
@@ -20,12 +22,9 @@ class ChangeManager {
   }
 
   void createChangeSet() {
-    ResourceRecordSet soa = zm.records.firstWhere((item) => item.type == 'SOA');
-    ResourceRecordSet newSoa = new ResourceRecordSet.fromJson(soa.toJson());
-    List<String> rrdata = soa.rrdatas[0].split(' ');
-    var serial = int.parse(rrdata[2]) + 1;
-    rrdata[2] = serial.toString();
-    newSoa.rrdatas[0] = rrdata.join(' ');
+    DnsRecord soa = new DnsRecord.fromRecord(zm.records.firstWhere((item) => item.type == 'SOA').toJson());
+    DnsRecord newSoa = new DnsRecord.fromRecord(soa.toJson());
+    newSoa.serial++;
     changeSet.additions = new List<ResourceRecordSet>();
     changeSet.deletions = new List<ResourceRecordSet>();
     changeSet.deletions.add(soa);
@@ -46,11 +45,17 @@ class ChangeManager {
   void resetChanges() => changeSet = new Change.fromJson({});
 
   void add(ResourceRecordSet record, {String toList: 'additions'}) {
-    changeSet.additions.add(record);
+    if (toList == 'additions')
+      changeSet.additions.add(record);
+    else
+      changeSet.deletions.add(record);
   }
 
   void remove(ResourceRecordSet record, {String fromList: 'additions'}) {
-    changeSet.additions.remove(record);
+    if (toList == 'additions')
+      changeSet.additions.remove(record);
+    else
+      changeSet.deletions.remove(record);
   }
 
 
