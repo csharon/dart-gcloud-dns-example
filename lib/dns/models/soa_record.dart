@@ -1,7 +1,4 @@
-library dns_editor.dns.models.soa_record;
-
-import 'dart:async' show Future;
-import 'package:dns_editor/dns/models/dns_record.dart';
+part of gcloud_dns_lib;
 
 class SoaRecord extends DnsRecord {
 
@@ -71,14 +68,7 @@ class SoaRecord extends DnsRecord {
     updateRRDatas();
   }
 
-  String get value {
-    if (this.rrdatas == null) return null;
-    if (this.rrdatas.isEmpty) {
-      this.rrdatas.add('');
-    }
-    return this.rrdatas[0];
-  }
-  void set value(String val) {
+  override set value(val) {
     if (this.rrdatas == null) {
       this.rrdatas = new List<String>();
     }
