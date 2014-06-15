@@ -36,13 +36,13 @@ testDnsRecord() {
         };
 
         DnsRecord record = new DnsRecord.fromRecord(data);
-        expect(record.serial, equals(2));
+        expect(record.rrDataValue.serial, equals(2));
         expect(record is SoaRecord, isTrue);
       });
 
       test('forType', () {
         DnsRecord record = new DnsRecord.forType('SOA');
-        expect(record.serial, equals(0));
+        expect(record.rrDataValue.serial, equals(0));
         expect(record is SoaRecord, isTrue);
         expect(record is ResourceRecordSet, isTrue);
 
@@ -56,10 +56,8 @@ testDnsRecord() {
 
       test('should be an empty string by default', (){
         var record = new DnsRecord();
-        expect(record.value, equals(''));
 
-        record.value = '1.2.3.4';
-        expect(record.value, equals('1.2.3.4'));
+        record.rrDataValue.value = '1.2.3.4';
         expect(record.rrdatas[0], equals('1.2.3.4'));
       });
 
