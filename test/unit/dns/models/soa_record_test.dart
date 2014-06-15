@@ -11,7 +11,7 @@ testSoaRecord() {
         };
 
         SoaRecord record = new SoaRecord.fromJson(data);
-        expect(record.serial, equals(2));
+        expect(record.rrDataValue.serial, equals(2));
       });
 
       test('fromJson with ResourceRecordSet', () {
@@ -20,7 +20,7 @@ testSoaRecord() {
         };
         ResourceRecordSet data = new ResourceRecordSet.fromJson(map);
         SoaRecord record = new SoaRecord.fromJson(data.toJson());
-        expect(record.serial, equals(2));
+        expect(record.rrDataValue.serial, equals(2));
       });
 
     });
@@ -33,14 +33,14 @@ testSoaRecord() {
         };
 
         SoaRecord record = new SoaRecord.fromJson(data);
-        record.value = 'ns-cloud-d1.googledomains.com. dns-admin.google.com. 3 21600 3600 1209600 300';
-        expect(record.serial, equals(3));
+        record.rrdatas = ['ns-cloud-d1.googledomains.com. dns-admin.google.com. 3 21600 3600 1209600 300'];
+        expect(record.rrDataValue.serial, equals(3));
       });
 
       test('set serial', () {
         SoaRecord record = new SoaRecord();
-        record.serial = 2014150601;
-        expect(record.value, equals('ns email 2014150601 21600 3600 1209600 300'));
+        record.rrDataValue.serial = 2014150601;
+        expect(record.rrdatas[0], equals('NAMESERVER ADMIN 2014150601 21600 3600 1209600 300'));
       });
 
     });

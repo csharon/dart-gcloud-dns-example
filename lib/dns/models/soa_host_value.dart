@@ -1,8 +1,8 @@
 part of gcloud_dns_lib;
 
-class SoaHostValue implements ResourceRecordMultiValue {
+class SoaHostValue extends RRDataValue implements ResourceRecordMultiValue {
 
-  String nameServer = 'NS';
+  String nameServer = 'NAMESERVER';
   String email = 'ADMIN';
   int serial = 0;
   int refreshRate = 21600;
@@ -13,7 +13,11 @@ class SoaHostValue implements ResourceRecordMultiValue {
 
   String get value => '${nameServer} ${email} ${serial.toString()} ${refreshRate.toString()} '
   + '${updateRetry.toString()} ${expiry.toString()} ${minCache.toString()}';
-  void set value(String val) => parseValue(val);
+  override set value(String val) => parseValue(val);
+
+  SoaHostValue();
+
+  SoaHostValue.fromString(recordValue) : super.fromString(recordValue);
 
   void parseValue(String val) {
     List<String> rrdata = val.split(' ');
