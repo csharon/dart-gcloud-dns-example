@@ -6,8 +6,7 @@ import 'package:google_dns_v1beta1_api/dns_v1beta1_api_browser.dart' as dnsclien
 import 'package:google_dns_v1beta1_api/dns_v1beta1_api_client.dart';
 import 'package:dns_editor/dns/google_cloud_dns.dart';
 import 'package:dns_editor/dns/zone_manager.dart';
-import 'package:dns_editor/dns/models/dns_record.dart';
-import 'package:dns_editor/dns/models/soa_record.dart';
+import 'package:dns_editor/dns/gcloud_dns_lib.dart';
 
 @Injectable()
 class ChangeManager {
