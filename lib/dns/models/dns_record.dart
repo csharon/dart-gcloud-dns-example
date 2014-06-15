@@ -1,8 +1,4 @@
-library dns_editor.dns.models.dns_record;
-
-import 'dart:async' show Future;
-import 'package:google_dns_v1beta1_api/dns_v1beta1_api_client.dart';
-import 'package:dns_editor/dns/models/soa_record.dart';
+part of gcloud_dns_lib;
 
 class DnsRecord extends ResourceRecordSet {
 
@@ -34,6 +30,25 @@ class DnsRecord extends ResourceRecordSet {
         DnsRecord instance = new DnsRecord();
         instance.type = recordType;
         return instance;
+    }
+  }
+
+  get value {
+    if (this.rrdatas == null) return null;
+    if (this.rrdatas.isEmpty) {
+      this.rrdatas.add('');
+    }
+    return this.rrdatas[0];
+  }
+  void set value(val) {
+    if (this.rrdatas == null) {
+      this.rrdatas = new List<String>();
+    }
+
+    if (this.rrdatas.isEmpty) {
+      this.rrdatas.add(val);
+    } else {
+      this.rrdatas[0] = val;
     }
   }
 
