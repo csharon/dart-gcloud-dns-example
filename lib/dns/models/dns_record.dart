@@ -33,23 +33,17 @@ class DnsRecord extends ResourceRecordSet {
     }
   }
 
-  get value {
-    if (this.rrdatas == null) return null;
-    if (this.rrdatas.isEmpty) {
-      this.rrdatas.add('');
-    }
-    return this.rrdatas[0];
-  }
-  void set value(val) {
-    if (this.rrdatas == null) {
-      this.rrdatas = new List<String>();
-    }
 
-    if (this.rrdatas.isEmpty) {
-      this.rrdatas.add(val);
+  get rrdatas => [rrDataValue.value];
+
+  set rrdatas(List<String> recordList){
+    if (recordList == null){
+      rrDataValue = new RRDataValue();
     } else {
-      this.rrdatas[0] = val;
+      rrDataValue = new RRDataValue.fromString(recordList.join(' '));
     }
   }
+
+  RRDataValue rrDataValue;
 
 }

@@ -1,6 +1,5 @@
 part of gcloud_dns_editor_tests;
 
-
 testRRDataValues() {
 
   group('MxHostValue', () {
@@ -33,6 +32,14 @@ testRRDataValues() {
 
   group('SoaHostValue', () {
     SoaHostValue host;
+
+    group('constructors', (){
+      setUp(() => host = new SoaHostValue.fromString('ns-cloud-d1.googledomains.com. dns-admin.google.com. 2 21600 3600 1209600 300'));
+      test('fromString', (){
+        expect(host.serial, equals(2));
+        expect(host.email, equals('dns-admin.google.com.'));
+      });
+    });
 
     setUp(() => host = new SoaHostValue());
 

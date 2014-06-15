@@ -23,7 +23,7 @@ class ChangeManager {
   void createChangeSet() {
     DnsRecord soa = new DnsRecord.fromRecord(zm.records.firstWhere((item) => item.type == 'SOA').toJson());
     DnsRecord newSoa = new DnsRecord.fromRecord(soa.toJson());
-    newSoa.serial++;
+    newSoa.rrDataValue.serial++;
     changeSet.additions = new List<ResourceRecordSet>();
     changeSet.deletions = new List<ResourceRecordSet>();
     changeSet.deletions.add(soa);
